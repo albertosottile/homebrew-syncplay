@@ -18,4 +18,4 @@ before_install:
 - pip3 --version
 
 install:
-- brew install --only-dependencies --verbose albertosottile/syncplay/pyside
+- brew install --only-dependencies albertosottile/syncplay/pyside
