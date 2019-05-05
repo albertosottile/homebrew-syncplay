@@ -1,0 +1,34 @@
+language: objective-c
+osx_image: xcode8.3
+
+branches:
+  only:
+  - master
+
+script:
+#- brew install --verbose --build-bottle albertosottile/syncplay/pyside
+- echo "something" > test.file.1.tar.gz
+
+before_install:
+#- brew update
+#- brew upgrade python
+#- which python3
+#- python3 --version
+#- which pip3
+#- pip3 --version
+
+install:
+#- brew install --only-dependencies --verbose --build-bottle albertosottile/syncplay/pyside
+
+before_deploy:
+#- brew bottle --verbose --json albertosottile/syncplay/pyside
+- ls -al
+
+deploy:
+  skip_cleanup: true
+  on: master
+  provider: bintray
+  file: "bintray.json"
+  user: alby128
+  key:
+    secure: "Il+kmdBfbwNOyeD05eaczLy/9IrZCnLpxoB6LeExXiBbwJdhXR+HDj4f6jGAMN69U3KdT+I0KWlzynTsRPq5qwPncwdZuxX2tBAB0RE/QY2GsabzZKB0jOkmQKZTySVnIptUEZRUN755rk/KYXuojpCl6/A5xlgYF7OVHFRZLahTvsaQGblnBQrn5Gwv9u8ORFLW6UzhaxlrDQwEgQ0wPPeVvyK6tl7w1PdJmxnLmZMcF28zoELeuL4OhSByon40qkPrmcxNA/2o4DUKFkDgv+5ztrGjZXsFiBcyCRuf4GGWBMzI0trV1hkYuRICUGN0LIczMwbm3S37TCRTuBQF/b+XF2cMKQU1hU51H9yk46fhOdoQJVYWvta+Wu+kKE4taT+pdnldxrPnF+oMlz+CCpIce/Qo1YewTxy8P0NBXdvfq0yhshv4x4gJ3iBnz+V23cE+FJ3HYy3nf5Xtmu+pQdR3OOwDNsmemm1Rk/jYCXIYm4kwSKAVZdF6pY6Zt2v7gYGBlMcPwHHYktA2WzKHIBKRYsk3WCEG/PoAORA0fCgqLVS4V3Lm7gH1a0W16U0rHuZTzBrV6Xe5SQZXxnASH/PKMrJWLfXBSCkswyLqsEycj+OG1RjcoFBvgsEjq4MwtDSOeVBxc27ZwEtFZ4/cl5hS8FFFAwsAp8nv+XI6coU="
