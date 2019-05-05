@@ -20,8 +20,10 @@ install:
 - brew install --only-dependencies --verbose --build-bottle albertosottile/syncplay/pyside
 
 before_deploy:
-- brew bottle --verbose --json albertosottile/syncplay/pyside
+- brew bottle --verbose --root-url https://dl.bintray.com/alby128/homebrew-syncplay --json albertosottile/syncplay/pyside
 - ls -al
+- git config --global user.email "travis@travis-ci.org"
+- git config --global user.name "Travis CI"
 
 deploy:
   skip_cleanup: true

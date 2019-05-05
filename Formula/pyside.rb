@@ -25,7 +25,7 @@ class Pyside < Formula
       --parallel=#{ENV.make_jobs}
       --module-subset=Core,Gui,Widgets
       --reuse-build
-      --install-lib lib/python#{xy}/site-packages
+      --install-lib #{lib}/python#{xy}/site-packages
       --install-scripts #{bin}
     ]
 
@@ -33,7 +33,7 @@ class Pyside < Formula
             *args, "--internal-build-type=shiboken2"
 
     system "python3", *Language::Python.setup_install_args(prefix),
-           *args, "--internal-build-type=pyside2"
+            *args, "--internal-build-type=pyside2"
 
     lib.install_symlink Dir.glob(lib/"python#{xy}/site-packages/PySide2/*.dylib")
     lib.install_symlink Dir.glob(lib/"python#{xy}/site-packages/shiboken2/*.dylib")
