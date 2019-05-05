@@ -6,22 +6,21 @@ branches:
   - master
 
 script:
-#- brew install --verbose --build-bottle albertosottile/syncplay/pyside
-- echo "something" > test.file.1.tar.gz
+- brew install --verbose --build-bottle albertosottile/syncplay/pyside
 
 before_install:
-#- brew update
-#- brew upgrade python
-#- which python3
-#- python3 --version
-#- which pip3
-#- pip3 --version
+- brew update
+- brew upgrade python
+- which python3
+- python3 --version
+- which pip3
+- pip3 --version
 
 install:
-#- brew install --only-dependencies --verbose --build-bottle albertosottile/syncplay/pyside
+- brew install --only-dependencies --verbose --build-bottle albertosottile/syncplay/pyside
 
 before_deploy:
-#- brew bottle --verbose --json albertosottile/syncplay/pyside
+- brew bottle --verbose --json albertosottile/syncplay/pyside
 - ls -al
 
 deploy:
