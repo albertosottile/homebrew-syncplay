@@ -4,12 +4,6 @@ class Pyside < Formula
   url "https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-5.12.3-src/pyside-setup-everywhere-src-5.12.3.tar.xz"
   sha256 "4f7aab7d4bbaf1b3573cc989d704e87b0de55cce656ae5e23418a88baa4c6842"
 
-  bottle do
-    cellar :any_skip_relocation
-    root_url "https://dl.bintray.com/alby128/homebrew-syncplay/"
-    sha256 "83aa80cf13da7d3c151eb2b3671beef9103642f132ff9e89ad07c6ba785aa4b8" => :sierra
-  end
-
   depends_on "cmake" => :build
   depends_on "llvm" => :build
   depends_on "python"
