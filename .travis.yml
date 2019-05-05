@@ -27,8 +27,6 @@ before_deploy:
 - ls -al
 - python3 bottle_mover.py
 - ls -al
-- git config --global user.email "travis@travis-ci.org"
-- git config --global user.name "Travis CI"
 
 deploy:
   skip_cleanup: true
