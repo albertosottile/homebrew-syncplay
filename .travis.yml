@@ -1,6 +1,10 @@
 language: objective-c
 osx_image: xcode8.3
 
+env:
+  global:
+    - secure: "IJwhvYOzGUTokHSfCRR6ioL5WrUoWAdzKJHeYfA7F6qY1SZCzTij7+tPLY61ANdjuZ+vTRvf1mtwObyMAsfo9jCtU65L234CG3c1Vun4xpzTCwk3K5PsSIP4S9tOJc0ddWoZWAD9cFZ4ZbSN0IApwRFX49BglsnyHYn/tCkODI04CqIpCsNJ2uBX9in9ShztXNBpIDaLoXSABAPco1EXUW//ydwjdt8GFESLVb8MRD0zbkymrgvCDQgOgsLWsT0GzQAXjzwXzpX6PQafc70UD/uPVtc8E5TlXuuXOqohqbzXtpcF8/lEqqZWZv2m4SkiDqFFVWU+2uvPbGiTWSDBIvxTL8QW9HXwKyijABh31v7dSiXwC/Mver9+MQ8nHRUP4U1rAft/VXMo/rXhiQoEuZRr1Dv8uctESGhafelKSvfIZSk1wZ92ltceP1fChn218pkEMVSuOdZxFeAFLgbC1rrLmofNUkhcaPq3dlzGe1xAzBjKB+wG+EKtGe/QnYNDQBFZ29iv31G54eAqZaDqyLqYrHRPMTwueEqJgufnlIbgUBov/Adob1FV0+MNxPY4kKysSWLBmiU+eW1swNkxbys4dLRZtTa2/sgU8sXSQBW+goHxTgKIS0jEqBzHXElizUhiF/LBS6UoWTvSJyapZvtYMAzP11c7ggQ3eJeB4KE="
+
 branches:
   only:
   - master
@@ -42,4 +46,9 @@ after_deploy:
 - git config --global user.name "Travis CI"
 - brew bottle --verbose --merge --write ./*.json
 - cd $(brew --repo albertosottile/syncplay)
-- git status
+- export OLD_MSG="$(git log --format=%B -n1)"
+- git commit --amend -m"${OLD_MSG}" -m"[ci skip]"
+- git show --name-status
+- git remote rm origin
+- git remote add origin https://albertosottile:${GH_TOKEN}@github.com/albertosottile/homebrew-syncplay.git > /dev/null 2>&1
+- git push origin master --quiet
